@@ -1,11 +1,11 @@
 import express from "express"
 import { __dirname } from "./utils.js"
-import productosRouter from "./routers/productos.Router.js"
-import viewRouter from "./routers/view.router.js"
-import cartsRouter from "./routers/carts.Router.js"
+import productosRouter from "./src/routers/productos.Router.js"
+import viewRouter from "./src/routers/view.router.js"
+import cartsRouter from "./src/routers/carts.Router.js"
 import handlebars from "express-handlebars"
 import { Server } from "socket.io"
-import "./dao/mongoosedb/dbConfig.js"
+import "./src/dao/mongoosedb/dbConfig.js"
 
 
 const app = express()
@@ -38,17 +38,11 @@ const socketServer = new Server(httpServer)
 
 socketServer.on("connection", async (Socket) => {
     console.log(`cliente conectado a servidor:${Socket.id}`)
-
-
-})
-
-
 Socket.on('disconnect', () => {
     console.log(`Un cliente se ha desconectado:${Socket.id}`)
 })
 
-
-
+})
 
 
 

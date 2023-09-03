@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { __dirname } from "../utils.js"
+import { __dirname } from "../../utils.js"
 import ManagerCart from "../dao/mongoosedb/managerMongose/managerCartMongoose.js"
 import managerProducto from "../dao/mongoosedb/managerMongose/managerProductoMoogose.js"
 

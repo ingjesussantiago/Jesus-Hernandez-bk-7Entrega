@@ -1,8 +1,7 @@
 import { Router } from "express"
 import managerProducto from "../dao/mongoosedb/managerMongose/managerProductoMoogose.js"
 
-import { uploader } from "../utils.js"
-import { __dirname } from "../utils.js"
+import { __dirname } from "../../utils.js"
 
 const router = Router()
 
