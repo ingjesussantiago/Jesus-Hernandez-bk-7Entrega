@@ -7,9 +7,14 @@ const router = Router()
 const ManagerProducto = new managerProducto()
 
 router.get("/home", async (req, res) => {
-    const productos = await ManagerProducto.getProduct()
-    // res.render("home",{ productos })
-    res.json({ productos })
+    try {
+        const productos = await ManagerProducto.getProduct()
+    res.render("home",{ productos })
+    // res.json({ productos })
+    } catch (error) {
+        console.log(error);
+    }
+    
 })
 
 router.get("/realTimeProductos", (req, res) => {

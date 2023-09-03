@@ -22,7 +22,8 @@ app.use("/", viewRouter)
 
 
 app.engine("handlebars", handlebars.engine())
-app.set("views", __dirname + "/views")
+app.set("views", __dirname + "/src/views")
+console.log("desde dirname",__dirname);
 app.set("view engine", "handlebars")
 
 
