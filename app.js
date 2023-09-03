@@ -1,14 +1,23 @@
-import express  from "express";
-import {__dirname} from "./utils.js";
+import express from "express"
+import { __dirname } from "./utils.js"
+import productosRouter from "./routers/productos.Router.js"
+import viewRouter from "./routers/view.router.js"
+import cartsRouter from "./routers/carts.Router.js"
 import handlebars from "express-handlebars"
-const PORT=8080
+import { Server } from "socket.io"
+import "./dao/mongoosedb/dbConfig.js"
 
-const app = express();
+
+const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(express.static(__dirname + "/public"))
+app.use("/carts", cartsRouter)
+app.use("/products", productosRouter)
+app.use("/", viewRouter)
+
 
 
 
@@ -17,11 +26,32 @@ app.set("views", __dirname + "/views")
 app.set("view engine", "handlebars")
 
 
-app.get("/",(req,res)=>{
-    res.send(`desde es puerto ${PORT}`)
+
+const PORT = 8080
+
+const httpServer = app.listen(PORT, () => {
+    console.log("escuchando puerto con htpp y socket io")
 })
 
 
-app.listen(PORT, (req,res)=>{
-    console.log(`servidor escuchando ${PORT}`);
+const socketServer = new Server(httpServer)
+
+socketServer.on("connection", async (Socket) => {
+    console.log(`cliente conectado a servidor:${Socket.id}`)
+
+
 })
+
+
+Socket.on('disconnect', () => {
+    console.log(`Un cliente se ha desconectado:${Socket.id}`)
+})
+
+
+
+
+
+
+
+
+
