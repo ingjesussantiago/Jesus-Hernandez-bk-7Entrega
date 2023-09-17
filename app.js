@@ -14,8 +14,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(express.static(__dirname + "/src/public"))
-app.use("/carts", cartsRouter)
-app.use("/products", productosRouter)
+app.use("api/carts", cartsRouter)
+app.use("api/products", productosRouter)
 app.use("/", viewRouter)
 console.log(__dirname);
 
