@@ -21,6 +21,9 @@ const productoSchema = new mongoose.Schema({
     },
     stock:{
         type:String
+    },
+    thumbnails:{
+        type:String
     }
 
 });

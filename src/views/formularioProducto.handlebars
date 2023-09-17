@@ -6,8 +6,8 @@
   </div>
 
 <div>
-  <form method="POST" action="/products" >
-    {{!-- <form method="POST" action="/products" enctype="multipart/form-data" ></form> --}}
+  {{!-- < method="POST" action="/products" > --}}
+ <form method="POST" action="/products" enctype="multipart/form-data" >
 
   <label for="name">Title:</label>
   <input type="text" id="title" name="title" required>
@@ -31,17 +31,16 @@
   <input type="text" id="category" name="category" required>
   <br>
 
-{{!-- <label for="image">Imagen:</label>
+<label for="image">Imagen:</label>
     <input type="file" name="file" id="file" required>
     <br>
 
 <img id="preview" src="#" alt="Vista previa de la imagen" style="max-width: 300px; display: none;">
- --}}
+
 
 
   <button type="submit">Enviar</button>
-</form>
-
+</form> 
 
 </div>
 
