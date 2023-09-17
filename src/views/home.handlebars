@@ -5,9 +5,8 @@
   <div class="card-body row justify-content-center">
     <h5 class="card-title text-center">{{title}}</h5>
     <p class="card-text text-center">${{price}}</p>
-
-  </div>
-  <a href="#" class="btn btn-primary text-center my-2">Ver Detalle</a>
+    </div>
+  <a href="/api/products/{{_id}}" class="btn btn-primary text-center my-2">Ver Detalle</a>
 </div>
 
 {{/each}}

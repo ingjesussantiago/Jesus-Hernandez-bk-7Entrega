@@ -12,17 +12,19 @@ router.get("/", async (req, res) => {
     try {
         const productos = await ManagerProducto.getProduct()
         res.render("home", { productos })
-    //    res.json({ productos })
+        //    res.json({ productos })
     } catch (error) {
         console.log(error);
     }
- })
+})
 
-router.get("/:idProducto", async (req, res) => {
+router.get("/:id", async (req, res) => {
     try {
-        const { idProducto } = req.params
-        const producto = await ManagerProducto.getProductoById(idProducto)
-        res.json({ producto })
+        const { id } = req.params
+        const producto = await ManagerProducto.getProductoById(id)
+         res.json({ producto })
+        // res.render("detalle", { producto })
+        console.log(producto);
     } catch (error) {
         console.log(error);
     }
@@ -37,18 +39,18 @@ router.post("/", uploader.single('file'), async (req, res) => {
             return res.status(400).send({ status: "error", mensaje: "no se adjunto archivo" })
         }
         console.log(req.file)
-    
+
         const producto = req.body
-    
+
         const productopaht = req.file.filename
-    
+
         producto.thumbnails = `/img/${productopaht}`
         console.log(producto.thumbnails);
-    
-    
+
+
         const nuevoProducto = await ManagerProducto.addProduct(producto)
         // res.json({ message: "Producto creado", producto: nuevoProducto })
-        res.redirect("/products")
+        res.redirect("/api/products")
     } catch (error) {
         console.log(error);
     }
