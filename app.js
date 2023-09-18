@@ -25,7 +25,7 @@ app.set("view engine", "handlebars")
 
 
 
-const PORT = 9090
+const PORT = 8080
 
 const httpServer = app.listen(PORT, () => {
     console.log("escuchando puerto con htpp y socket io")

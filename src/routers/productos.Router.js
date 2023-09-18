@@ -22,7 +22,7 @@ router.get("/:id", async (req, res) => {
     try {
         const { id } = req.params
         const producto = await ManagerProducto.getProductoById(id)
-         res.json({ producto })
+        res.json({ producto })
         // res.render("detalle", { producto })
         console.log(producto);
     } catch (error) {
