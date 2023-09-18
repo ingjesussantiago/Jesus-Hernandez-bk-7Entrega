@@ -13,17 +13,14 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use(express.static(__dirname + "/public"))
-app.use("/carts", cartsRouter)
-app.use("/products", productosRouter)
+app.use(express.static(__dirname + "/src/public"))
+app.use("/api/carts", cartsRouter)
+app.use("/api/products", productosRouter)
 app.use("/", viewRouter)
-
-
 
 
 app.engine("handlebars", handlebars.engine())
 app.set("views", __dirname + "/src/views")
-console.log("desde dirname",__dirname);
 app.set("view engine", "handlebars")
 
 
