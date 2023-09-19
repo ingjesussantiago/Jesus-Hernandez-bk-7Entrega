@@ -44,7 +44,7 @@ router.post("/", async (req, res) => {
 
 })
 
-router.delete(":idCart", async (req, res) => {
+router.get("/delete/:idCart", async (req, res) => {
     try {
         const { idCart } = req.params
         const delatecart = await managerCart.delatecarrito(idCart)
