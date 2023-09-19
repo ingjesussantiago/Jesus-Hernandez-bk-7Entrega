@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
     try {
         const productos = await ManagerProducto.getProduct()
         res.render("home", { productos })
-    //  res.json({ productos })
+        //  res.json({ productos })
     } catch (error) {
         console.log(error);
     }
@@ -23,54 +23,13 @@ router.get("/:id", async (req, res) => {
     try {
         const { id } = req.params
         const producto = await ManagerProducto.getProductoById(id)
-        // console.log(id);
         // res.json({ producto })
-        res.render("detalle", {producto})
-        console.log(producto);
+        res.render("detalle", { producto })
     } catch (error) {
         console.log(error);
     }
 
 })
-
-
-// router.get("/:id", async (req, res) => {
-//     try {
-//         const { id } = req.params
-//         const objectId = new mongoose.Types.ObjectId(id);
-//         const producto = await ManagerProducto.getProductoById(objectId)
-//         // console.log(id);
-//         // res.json({ producto })
-//         res.render("detalle", {producto})
-//         // console.log(producto);
-//     } catch (error) {
-//         console.log(error);
-//     }
-
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //pos para imagen

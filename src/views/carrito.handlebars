@@ -1,10 +1,13 @@
-<h1>Carrito de Compras</h1>
-    <ul id="carrito">
-        {{#each productos}}
-        <li>
-            <strong>{{nombre}}</strong>
-            <span>Precio: ${{precio}}</span>
-            <span>Cantidad: {{cantidad}}</span>
-        </li>
+ <h1>Carrito de Compras</h1>
+    <ul>
+        {{#each items}}
+            <li>
+                <img src="{{this.productImage}}" alt="{{this.productName}}">
+                <span>{{this.productName}}</span>
+                <span>Cantidad: <input type="number" value="{{this.quantity}}" onchange="updateQuantity('{{this._id}}', this.value)"></span>
+                <span>Precio: ${{this.price}}</span>
+                <button onclick="removeItem('{{this._id}}')">Eliminar</button>
+            </li>
         {{/each}}
     </ul>
+    <p>Total: ${{total}}</p>
