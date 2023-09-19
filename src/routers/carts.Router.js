@@ -11,7 +11,8 @@ const ManagerProduct=new managerProducto()
 router.get("/", async (req, res) => {
     try {
         const carts = await managerCart.getCarts()
-        res.json({ carts })
+        res.render("carritos", {carts})
+        // res.json({ carts })
     } catch (error) {
         console.log(error);
     }
