@@ -44,7 +44,7 @@ router.post("/", async (req, res) => {
 
 })
 
-router.delete("/:idCart", async (req, res) => {
+router.delete(":idCart", async (req, res) => {
     try {
         const { idCart } = req.params
         const delatecart = await managerCart.delatecarrito(idCart)
@@ -53,6 +53,8 @@ router.delete("/:idCart", async (req, res) => {
 
     }
 })
+
+
 
 router.post("/:cartId/products/:pid", async (req, res) => {
     const { cartId, pid } = req.params;

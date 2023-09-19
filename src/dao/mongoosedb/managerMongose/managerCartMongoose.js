@@ -43,7 +43,7 @@ export default class ManagerCart {
 
     delatecarrito = async (cartId) => {
         try {
-            const delatecart = await cartModel.findByIdAndDelete(cartId);
+            const delatecart = await cartModel.findByIdAndDelete(cartId).lean()
             return delatecart;
         } catch (error) {
             console.log(error);
