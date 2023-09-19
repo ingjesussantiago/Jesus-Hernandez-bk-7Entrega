@@ -6,21 +6,23 @@ export default class managerProducto {
     getProduct = async () => {
         try {
             const productos = await productoModel.find().lean()
-           return productos
+            return productos
         } catch (error) {
             console.log(error);
         }
     }
 
-    getProductoById = async (idProducto) => {
+    getProductoById = async (_id) => {
         try {
-            const productoById = await productoModel.findById(idProducto)
-            // const productos = JSON.parse(buscarproducts)
-            return productoById
+            const producto = await productoModel.findById(_id).lean()
+            //  console.log("desdemanager",producto);
+            return producto
+
         } catch (error) {
             console.log(error);
         }
     }
+
 
     addProduct = async (producto) => {
         try {
@@ -53,10 +55,10 @@ export default class managerProducto {
 
     }
 
-    upDateProduc = async (idProducto,productoup) => {
+    upDateProduc = async (idProducto, productoup) => {
         try {
-            const updateOptions={new:true}
-            const modificaProdcto = await productoModel.findByIdAndUpdate(idProducto,productoup,updateOptions)
+            const updateOptions = { new: true }
+            const modificaProdcto = await productoModel.findByIdAndUpdate(idProducto, productoup, updateOptions)
             return modificaProdcto
         } catch (error) {
             console.log(error);
