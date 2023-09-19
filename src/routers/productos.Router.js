@@ -26,7 +26,7 @@ router.get("/:id", async (req, res) => {
         // console.log(id);
         // res.json({ producto })
         res.render("detalle", {producto})
-        // console.log(producto);
+        console.log(producto);
     } catch (error) {
         console.log(error);
     }
