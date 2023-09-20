@@ -1,16 +1,16 @@
 <div class="container">
-    <h1 class="mt-5">Lista de Carritos</h1>
+
     <ul class="list-group mt-3">
         {{#if carts.length}}
-
+        <h1 class="mt-5">Lista de Carritos</h1>
         {{#each carts}}
         <li class="list-group-item d-flex justify-content-between align-items-center">
             {{_id}}
-            <a href="/api/carts/delete/{{_id}}" class="btn btn-danger text-center my-2">Detalle de Carrito</a> 
+            <a href="/api/carts/{{_id}}" class="btn btn-danger text-center my-2">Detalle de Carrito</a>
         </li>
         {{/each}}
         {{else}}
-        <h2>El carrito esta vacio</h2>
+        <h2>No Existen carritos</h2>
         {{/if}}
     </ul>
 </div>

@@ -4,12 +4,12 @@
     {{#each carts}}
 
     <li>
-        <img src="{{this.productImage}}" alt="{{this.productName}}">
+        <img src="{{}}">
         <span>{{this.productName}}</span>
         <span>Cantidad: <input type="number" value="{{this.quantity}}"
                 onchange="updateQuantity('{{this._id}}', this.value)"></span>
         <span>Precio: ${{this.price}}</span>
-        <button onclick="removeItem('{{this._id}}')">Eliminar</button>
+         <a href="/api/carts/delete/{{_id}}" class="btn btn-danger text-center my-2">Detalle de Carrito</a>
     </li>
 
     {{/each}}
