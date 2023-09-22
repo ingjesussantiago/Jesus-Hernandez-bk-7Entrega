@@ -17,7 +17,8 @@ export default class ManagerCart {
 
     getCart = async (cartId) => {
         try {
-            const cart = await cartModel.findById(cartId).populate("products._id").lean()
+            
+            const cart = await cartModel.findById(cartId).lean().populate("products._id");
             return cart;
         } catch (err) {
             console.error('Error al traer el carrito por ID:', err.message);
