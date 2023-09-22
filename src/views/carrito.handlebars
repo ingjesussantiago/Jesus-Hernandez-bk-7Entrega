@@ -1,13 +1,13 @@
 <h1>Carrito de Compras</h1>
 <ul>
-    {{#if carts.length}}
-    {{#each carts}}
+    {{#if cart.length}}
+    {{#each cart}}
 
     <li>
-        <img src="{{}}">
-        <span>{{this.productName}}</span>
-        <span>Cantidad: <input type="number" value="{{this.quantity}}"
-                onchange="updateQuantity('{{this._id}}', this.value)"></span>
+        {{!-- <img src="{{}}"> --}}
+        <span>{{product}}</span>
+        <span>Cantidad: <input type="number" value="{{cart.quantity}}"
+                onchange="updateQuantity('{{cart_id}}', this.value)"></span>
         <span>Precio: ${{this.price}}</span>
          <a href="/api/carts/delete/{{_id}}" class="btn btn-danger text-center my-2">Detalle de Carrito</a>
     </li>

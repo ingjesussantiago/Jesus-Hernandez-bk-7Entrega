@@ -24,7 +24,8 @@ router.get("/:idCart", async (req, res) => {
     try {
         const { idCart } = req.params
         const cart = await managerCart.getCart(idCart)
-        res.json({ cart })
+        // res.json({ cart })
+        res.render("carrito",cart)
 
     } catch (error) {
         console.log(error);
