@@ -2,6 +2,18 @@ import { productoModel } from "../models/producto.model.js"
 
 
 export default class managerProducto {
+    paginateProductos=async()=>{
+        try {
+            const responde=await productoModel.paginate()
+            return responde
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+
+
 
     getProduct = async () => {
         try {

@@ -8,6 +8,16 @@ import { __dirname } from "../../utils.js"
 const router = Router()
 
 const ManagerProducto = new managerProducto()
+router.get("/paginate", async (req, res) => {
+    try {
+        const productos = await ManagerProducto.paginateProductos()
+        // res.render("home", { productos })
+        res.json({ productos })
+    } catch (error) {
+        console.log(error);
+    }
+})
+
 
 router.get("/", async (req, res) => {
     try {
