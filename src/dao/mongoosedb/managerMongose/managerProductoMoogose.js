@@ -24,6 +24,26 @@ export default class managerProducto {
         }
     }
 
+
+    getProductAgregation = async () => {
+        try {
+            const productosFiltrados = await productoModel.aggregate([
+{
+   $match:{price:{$gt:500}}, 
+
+
+},
+{   $count:"cantidad"}
+
+            ])
+            return productosFiltrados
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+
     getProductoById = async (_id) => {
         try {
             const producto = await productoModel.findById(_id).lean()

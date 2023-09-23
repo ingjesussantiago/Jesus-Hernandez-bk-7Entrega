@@ -30,6 +30,23 @@ router.get("/", async (req, res) => {
     }
 })
 
+router.get("/agregation", async (req, res) => {
+    try {
+        const productosFiltrados= await ManagerProducto.getProductAgregation()
+        // res.render("formulario")
+        // res.render("home", { productosFiltrados })
+         res.json({ productosFiltrados })
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+
+
+
+
+
+
 router.get("/:id", async (req, res) => {
     try {
         const { id } = req.params
