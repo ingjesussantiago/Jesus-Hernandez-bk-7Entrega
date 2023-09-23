@@ -2,18 +2,24 @@ import { productoModel } from "../models/producto.model.js"
 
 
 export default class managerProducto {
-    paginateProductos=async()=>{
+
+    paginateProductos = async (limit,page) => {
         try {
-            const responde=await productoModel.paginate()
-            return responde
+            const productos = await productoModel.paginate({category:"ropa medica"},{limit,page})
+            const info={
+                count:productos.totalDocs,
+                page:productos.totalPages,
+                prev:productos.hasPrevPage ? `http://localhost:8080/api/products/paginate?page=${productos.prevPage}`: null,
+                next:productos.hasNextPage ? `http://localhost:8080/api/products/paginate?page=${productos.nextPage}`: null
+            }
+            
+            
+            
+            return {info,productos:productos.docs}
         } catch (error) {
             console.log(error);
         }
     }
-
-
-
-
 
     getProduct = async () => {
         try {
@@ -29,11 +35,10 @@ export default class managerProducto {
         try {
             const productosFiltrados = await productoModel.aggregate([
 {
-   $match:{price:{$gt:500}}, 
-
+   $match:{price:{$gt:300}}, 
 
 },
-{   $count:"cantidad"}
+// {   $count:"cantidad"}
 
             ])
             return productosFiltrados
@@ -62,6 +67,7 @@ export default class managerProducto {
             return nuevoProducto
 
         } catch (error) {
+
             console.log(error);
         }
     }

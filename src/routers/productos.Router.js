@@ -10,25 +10,15 @@ const router = Router()
 const ManagerProducto = new managerProducto()
 router.get("/paginate", async (req, res) => {
     try {
-        const productos = await ManagerProducto.paginateProductos()
-        // res.render("home", { productos })
+        const {limit=10,page=1}=req.query
+        const productos = await ManagerProducto.paginateProductos(limit,page)
+    // res.render("home", { productos:productos.docs })
         res.json({ productos })
     } catch (error) {
         console.log(error);
     }
 })
 
-
-router.get("/", async (req, res) => {
-    try {
-        const productos = await ManagerProducto.getProduct()
-        // res.render("formulario")
-        res.render("home", { productos })
-        //  res.json({ productos })
-    } catch (error) {
-        console.log(error);
-    }
-})
 
 router.get("/agregation", async (req, res) => {
     try {
@@ -43,7 +33,16 @@ router.get("/agregation", async (req, res) => {
 
 
 
-
+router.get("/", async (req, res) => {
+    try {
+        const productos = await ManagerProducto.getProduct()
+        // res.render("formulario")
+        res.render("home", { productos })
+        //  res.json({ productos })
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 
 
