@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
     try {
         const carts = await managerCart.getCarts()
         res.render("carritos", {carts})
-      //  res.json({ carts })
+        // res.json({ carts })
     } catch (error) {
         console.log(error);
     }
@@ -24,9 +24,8 @@ router.get("/:idCart", async (req, res) => {
     try {
         const { idCart } = req.params
         const cart = await managerCart.getCart(idCart)
-        // console.log(cart.products);
-        res.json({ cart })
-        // res.render("carrito",{cart})
+        // res.json({ cart })
+        res.render("carrito",cart)
 
     } catch (error) {
         console.log(error);
