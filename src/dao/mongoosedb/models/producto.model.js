@@ -14,7 +14,8 @@ const productoSchema = new mongoose.Schema({
         type:Number
     },
     status:{
-        type:Boolean
+        type:Boolean,
+        default:true
     },
     category:{
         type:String

@@ -12,6 +12,7 @@ const ManagerProducto = new managerProducto()
 router.get("/", async (req, res) => {
     try {
         const productos = await ManagerProducto.getProduct()
+        // res.render("formulario")
         res.render("home", { productos })
         //  res.json({ productos })
     } catch (error) {
@@ -23,7 +24,6 @@ router.get("/:id", async (req, res) => {
     try {
         const { id } = req.params
         const producto = await ManagerProducto.getProductoById(id)
-        // res.json({ producto })
         res.render("detalle", { producto })
     } catch (error) {
         console.log(error);
