@@ -12,9 +12,8 @@ router.get("/paginate", async (req, res) => {
     try {
         const {limit=10,page=1}=req.query
         const productos = await ManagerProducto.paginateProductos(limit,page)
-   console.log(productos);
-        res.render("products", { productos })
-    //  res.json({ productos })
+    res.render("products", { productos })
+    // res.json({ productos })
     } catch (error) {
         console.log(error);
     }

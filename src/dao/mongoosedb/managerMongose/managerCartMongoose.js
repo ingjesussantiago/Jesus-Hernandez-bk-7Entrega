@@ -75,14 +75,7 @@ export default class ManagerCart {
 
 
 
-
-
-
-
-
-
-
-    addProductoToCars = async (idCart, idProducto) => {
+    addProductoCarts = async (idCart, idProducto) => {
         try {
             const filter = { _id: idCart, "products._id": idProducto._id };
             const cart = await cartModel.findById(idCart);

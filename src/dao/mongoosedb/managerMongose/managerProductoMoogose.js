@@ -6,15 +6,21 @@ export default class managerProducto {
     paginateProductos = async (limit,page) => {
         try {
             const productos = await productoModel.paginate({category:"ropa masculina"},{limit,page})
+                
+            // const products = {
+            //     title:productos.docs._id,
+            //     price:productos.docs.price,
+            // }
+            
+            
             const info={
                 count:productos.totalDocs,
                 page:productos.totalPages,
                 prev:productos.hasPrevPage ? `http://localhost:8080/api/products/paginate?page=${productos.prevPage}`: null,
                 next:productos.hasNextPage ? `http://localhost:8080/api/products/paginate?page=${productos.nextPage}`: null
             }
-            
-                  
-            return {info,productos:productos.docs}
+          
+            return {productos:productos.docs,info}
             
         } catch (error) {
             console.log(error);
