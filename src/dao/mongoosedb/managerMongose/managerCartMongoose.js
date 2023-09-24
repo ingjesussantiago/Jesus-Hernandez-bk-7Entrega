@@ -4,7 +4,7 @@ export default class ManagerCart {
 
     getCarts = async () => {
         try {
-            const carts = await cartModel.find().lean();
+            const carts = await cartModel.find().lean().populate("products._id")
             return carts
 
         } catch (error) {
@@ -18,7 +18,7 @@ export default class ManagerCart {
     getCart = async (cartId) => {
         try {
             
-            const cart = await cartModel.findById(cartId).lean().populate("products._id");
+            const cart = await cartModel.findById(cartId).lean().populate("products._id")
             return cart;
         } catch (err) {
             console.error('Error al traer el carrito por ID:', err.message);
@@ -89,7 +89,7 @@ export default class ManagerCart {
                 await cartModel.updateOne({ _id: idCart }, update);
             }
 
-            return await cartModel.findById(idCart);
+            return await cartModel.findById(idCart).lean()
         } catch (err) {
             console.error('Error al agregar el producto al carrito:', err.message);
             return err;
@@ -97,11 +97,19 @@ export default class ManagerCart {
 
     }
 
-    deleteProductInCart = async (idCart, productos) => {
+    updateOneProduct = async (cid, products) => {
+        
+        await cartModel.updateOne(
+            { _id: cid },
+            {products})
+        return await cartModel.findOne({ _id: cid })
+    }
+
+    deleteProductInCart = async (cid, products) => {
         try {
             return await cartModel.findOneAndUpdate(
-                { _id: idCart },
-                { productos },
+                { _id: cid },
+                { products },
                 { new: true })
 
         } catch (err) {
@@ -109,15 +117,6 @@ export default class ManagerCart {
         }
 
     }
-    updateOneProduct = async (idCart, productos) => {
-
-        await cartModel.updateOne(
-            { _id: idCart },
-            { productos })
-        return await cartModel.findOne({ _id: idCart })
-    }
-
-
 
 
 

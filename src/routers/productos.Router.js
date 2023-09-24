@@ -12,8 +12,8 @@ router.get("/paginate", async (req, res) => {
     try {
         const {limit=10,page=1}=req.query
         const productos = await ManagerProducto.paginateProductos(limit,page)
-    res.render("products", { productos })
-    // res.json({ productos })
+    // res.render("products", { productos })
+    res.json({ productos })
     } catch (error) {
         console.log(error);
     }
@@ -37,8 +37,8 @@ router.get("/", async (req, res) => {
     try {
         const productos = await ManagerProducto.getProduct()
         // res.render("formulario")
-        res.render("home", { productos })
-        //  res.json({ productos })
+        //  res.render("home", { productos })
+         res.json({ productos })
     } catch (error) {
         console.log(error);
     }
@@ -50,7 +50,8 @@ router.get("/:id", async (req, res) => {
     try {
         const { id } = req.params
         const producto = await ManagerProducto.getProductoById(id)
-        res.render("detalle", { producto })
+        res.json({producto})
+        // res.render("detalle", { producto })
     } catch (error) {
         console.log(error);
     }

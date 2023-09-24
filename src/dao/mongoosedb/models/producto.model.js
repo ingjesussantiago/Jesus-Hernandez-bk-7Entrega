@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import paginate from "mongoose-paginate-v2"
 
 const productoSchema = new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    
     title:{
         type:String
     },
