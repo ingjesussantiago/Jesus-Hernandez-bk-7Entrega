@@ -1,0 +1,32 @@
+ <div class="text-center">
+    <h1>Productos</h1>
+  </div>
+{{#if productos.productos.length}}
+{{#each productos.productos}}
+<div class="card " style="width:17rem">
+      <h5 class="card-title text-center">{{productos.title}}$</h5>
+  {{!-- <img src="{{thumbnails}}" class="card-img-top" height="50%" />
+  <div class="card-body row justify-content-center">
+
+    <p class="card-text text-center">${{price}}</p>
+    </div>
+  <a href="/api/products/{{_id}}" class="btn btn-primary text-center my-2">Ver Detalle</a> --}}
+</div>
+
+{{/each}}
+
+  <div class="container d-flex row">
+    <div class=" col-md-6 justify-content-center">
+      <button id="prevButton" class="btn btn-primary" disabled>{{productos.info.next:}}</button>
+      <button id="pageButton" class="btn btn-secondary">{{productos.info.page}}</button>
+      <button id="nextButton" class="btn btn-primary">Siguiente</button>
+    </div>
+  </div>
+</div>
+
+{{else}}
+
+<h2>El arreglo esta vacio</h2>
+
+{{/if}}
+<script src="/socket.io/socket.io.js"></script>
